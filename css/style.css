@@ -1,0 +1,393 @@
+/* Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+/* Container do Jogo */
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000033, #000011);
+    overflow: hidden;
+}
+
+/* Foguete */
+#rocket {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: silver;
+    border-radius: 5px 5px 0 0;
+    transform-origin: center bottom;
+    transition: transform 0.1s ease;
+    z-index: 10;
+}
+
+#flame {
+    position: absolute;
+    bottom: -15px;
+    left: 5px;
+    width: 10px;
+    height: 15px;
+    background-color: orange;
+    border-radius: 0 0 5px 5px;
+    display: none;
+    animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.7; height: 15px; }
+    100% { opacity: 1; height: 20px; }
+}
+
+/* Plataforma de Pouso */
+#landing-pad {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 10px;
+    background-color: #666;
+    border-radius: 5px 5px 0 0;
+    z-index: 5;
+}
+
+/* HUD (Heads-Up Display) */
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+.hud-item {
+    margin-bottom: 5px;
+}
+
+/* Indicador de Vento */
+#wind-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+#wind-arrow {
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+/* Tela de Game Over */
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    display: none;
+    z-index: 30;
+}
+
+#message {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+#final-score {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* Tela de Login */
+#login-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 50;
+}
+
+#login-screen h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 300px;
+}
+
+#username-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+}
+
+#username-input:focus {
+    outline: 2px solid #4CAF50;
+}
+
+/* Tela de Início */
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 40;
+}
+
+#start-screen h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+}
+
+#start-screen p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.controls-info {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.controls-info h2 {
+    margin-bottom: 10px;
+}
+
+/* Tela de Nível Completo */
+#level-complete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    display: none;
+    z-index: 30;
+}
+
+#level-score {
+    margin: 20px 0;
+}
+
+/* Tela de Leaderboard */
+#leaderboard-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 45;
+    display: none;
+}
+
+#leaderboard-screen h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+}
+
+#leaderboard-container {
+    width: 80%;
+    max-width: 600px;
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+#leaderboard-table th, 
+#leaderboard-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#leaderboard-table th {
+    background-color: rgba(76, 175, 80, 0.3);
+    font-size: 18px;
+}
+
+#leaderboard-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+#leaderboard-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Destacar o jogador atual na tabela */
+.current-player {
+    background-color: rgba(76, 175, 80, 0.2) !important;
+    font-weight: bold;
+}
+
+/* Botões */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#show-leaderboard-btn, #leaderboard-btn {
+    margin-top: 10px;
+    background-color: #2196F3;
+}
+
+#show-leaderboard-btn:hover, #leaderboard-btn:hover {
+    background-color: #0b7dda;
+}
+
+#close-leaderboard-btn {
+    background-color: #f44336;
+}
+
+#close-leaderboard-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Estrelas */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Partículas de Vento */
+.wind-particle {
+    position: absolute;
+    width: 3px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #hud, #wind-indicator {
+        font-size: 14px;
+    }
+    
+    #game-over, #level-complete {
+        font-size: 20px;
+        padding: 20px;
+    }
+    
+    #start-screen h1, #login-screen h1 {
+        font-size: 36px;
+    }
+    
+    #start-screen p, #login-screen p {
+        font-size: 16px;
+    }
+    
+    button {
+        font-size: 16px;
+    }
+    
+    #leaderboard-container {
+        width: 95%;
+    }
+    
+    #leaderboard-table th, 
+    #leaderboard-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+.leaderboard-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#refresh-leaderboard-btn {
+    background-color: #4CAF50;
+}
+
+#refresh-leaderboard-btn:hover {
+    background-color: #45a049;
+}
+
+#refresh-leaderboard-btn.loading {
+    background-color: #cccccc;
+    cursor: not-allowed;
+} 

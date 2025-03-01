@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pouso Lunar - Jogo de Pouso de Foguete</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="game-container">
+        <div id="rocket">
+            <div id="flame"></div>
+        </div>
+        <div id="landing-pad"></div>
+        <div id="hud">
+            <div class="hud-item">
+                Velocidade: <span id="velocity">0</span> m/s
+            </div>
+            <div class="hud-item">
+                Combustível: <span id="fuel">100</span>%
+            </div>
+            <div class="hud-item">
+                Pontuação: <span id="score">0</span>
+            </div>
+            <div class="hud-item">
+                Jogador: <span id="player-name-display">-</span>
+            </div>
+            <div class="hud-item">
+                Pousos: <span id="landing-count">0</span>
+            </div>
+        </div>
+        <div id="wind-indicator">
+            Vento: <span id="wind-strength">0</span> m/s
+            <span id="wind-arrow"></span>
+        </div>
+        <div id="game-over">
+            <div id="message"></div>
+            <div id="final-score">Pontuação: <span id="end-score">0</span></div>
+            <button id="restart-btn">Jogar Novamente</button>
+            <button id="show-leaderboard-btn">Ver Placar</button>
+        </div>
+        <div id="login-screen">
+            <h1>Pouso Lunar</h1>
+            <p>Digite seu nome para começar:</p>
+            <div class="login-form">
+                <input type="text" id="username-input" placeholder="Seu nome" maxlength="15">
+                <button id="login-btn">Continuar</button>
+            </div>
+        </div>
+        <div id="start-screen">
+            <h1>Pouso Lunar</h1>
+            <p>Controle o foguete e pouse com segurança na plataforma!</p>
+            <div class="controls-info">
+                <h2>Controles:</h2>
+                <p>↑ ou W: Propulsão</p>
+                <p>← ou A: Rotacionar para esquerda</p>
+                <p>→ ou D: Rotacionar para direita</p>
+            </div>
+            <button id="start-btn">Iniciar Jogo</button>
+            <button id="leaderboard-btn">Ver Placar</button>
+        </div>
+        <div id="level-complete">
+            <h2>Nível Concluído!</h2>
+            <div id="level-score">Pontuação: <span id="level-points">0</span></div>
+            <button id="next-level-btn">Próximo Nível</button>
+        </div>
+        <div id="leaderboard-screen">
+            <h2>Melhores Jogadores</h2>
+            <div id="leaderboard-container">
+                <table id="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Jogador</th>
+                            <th>Pontuação</th>
+                            <th>Pousos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                        <!-- Dados do leaderboard serão inseridos aqui -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="leaderboard-buttons">
+                <button id="refresh-leaderboard-btn">Atualizar Placar</button>
+                <button id="close-leaderboard-btn">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Scripts do jogo -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/rocket.js"></script>
+    <script src="js/wind.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
